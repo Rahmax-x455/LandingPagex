@@ -8,12 +8,18 @@ References used :
 
 Udasty lessons and sessions
 
-File and Folders Structure
+File and Folders Structure :
 css
-- styles.css    
+- styles.css  
+
+
 js
 - app.js
+
+
 index.html
+
+
 README.md
 
 
