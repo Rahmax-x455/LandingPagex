@@ -1,0 +1,305 @@
+/*
+ *
+ * CSS written based on SMACSS architecture.
+ * To learn more, visit: http://smacss.com/
+ * 
+ * For simplicity, no reset or normalize is added. 
+ * To learn more, visit: https://css-tricks.com/reboot-resets-reasoning/
+ *
+*/
+
+body {
+    margin: 10px;
+    font-family: 'Merriweather', serif;
+}
+
+img {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+
+.main__hero {
+    display: flex;
+    justify-content: center;
+}
+
+/* Typeography General*/
+h5 {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 6em;
+    margin-top: 40%;
+    margin-left: 8%;
+    text-align: center;
+    color: #182960;
+
+}
+
+
+@media only screen and (min-width: 35em) {
+    h1 {
+        font-size: 7em;
+        margin: 2em 4rem 1em;
+    }
+}
+
+h2 {
+    border-bottom: 1px solid #FEB2DE;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 3em;
+    color: #458FF6;
+    text-align: center;
+}
+
+p {
+    line-height: 2em;
+    color: #182960;
+    text-align: center;
+
+}
+
+.btn {
+    margin: 2rem 0;
+    padding: 0.6rem 3rem;
+    border: 0.1rem solid #458FF6;
+    border-radius: 20px;
+    background-color: #fff;
+    cursor: pointer;
+    outline: none;
+    color: #458FF6;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #458FF6;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+/* ---- Layout Rules ---- */
+main {
+    margin: 10vh 1em 10vh;
+}
+
+.main-hero {
+    min-height: 40vh;
+    padding-top: 3em;
+}
+
+section {
+    position: relative;
+    min-height: 80vh;
+}
+
+
+/* ---- Module Rules ---- */
+
+/* Navigation Styles*/
+.navbar__menu ul {
+    padding: 0.2%;
+    margin: 0;
+    text-align: center;
+}
+
+.navbar__menu .menu__link, .menu__link__active {
+    display: inline-block;
+    padding: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #182960;
+}
+
+.navbar__menu .menu__link:hover, .menu__link__active {
+    background: #FEB2DE;
+    color: #fff;
+    transition: ease 0.3s all;
+}
+
+/* Header Styles */
+.page__header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+}
+
+/* Footer Styles */
+.page__footer {
+    background: #182960;
+    padding: 3em;
+    color: #fff;
+}
+
+.page__footer p {
+    color: #fff;
+}
+
+@media only screen and (min-width: 35em) {
+    .landing__container {
+        max-width: 90em;
+        padding: 9em;
+    }
+}
+
+section:nth-of-type(even) .landing__container {
+    margin-right: 0;
+    margin: auto;
+    text-align: center;
+}
+
+/* Background Circles */
+/* Note that background circles are created with psuedo elements before and after */
+/* Circles appear to be random do to use of :nth-of-type psuedo class */
+section:nth-of-type(odd) .landing__container::before {
+    content: '';
+    background: #FEB2DE;
+    position: absolute;
+    z-index: -5;
+    width: 20vh;
+    height: 20vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(even) .landing__container::before {
+    content: '';
+    background: #FEB2DE;
+    position: absolute;
+    z-index: -5;
+    width: 20vh;
+    height: 20vh;
+    border-radius: 50%;
+    opacity: 0;
+    right: 29%;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(3n) .landing__container::after {
+    content: '';
+    background: #FEB2DE;
+    position: absolute;
+    z-index: -5;
+    width: 20vh;
+    height: 20vh;
+    border-radius: 50%;
+    opacity: 0;
+    right: 29%;
+    transition: ease 0.5s all;
+}
+
+
+
+/* ---- Theme State Rules ---- */
+/* Section Active Styles */
+/* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
+
+
+section.your-active-class .landing__container::before {
+    opacity: 1;
+    animation: rotate 4s linear 0s infinite forwards;
+}
+
+section.your-active-class .landing__container::after {
+    opacity: 1;
+    animation: rotate 5s linear 0s infinite forwards reverse;
+}
+
+/* Section Active Styles Keyframe Animations */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg) translate(-1em) rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg) translate(-1em) rotate(-360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar__menu ul {
+        padding: 0.1%;
+        /* margin: 0; */
+        text-align: center;
+        width: 40%;
+        height: 70%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .navbar__menu .menu__link, .menu__link__active {
+        padding: 1em;
+        font-weight: bold;
+        text-decoration: none;
+        color: #182960;
+    }
+
+    .page__header {
+        width: 10%;
+        font-size: 15px;
+    }
+
+    .col {
+        width: 100%;
+        margin: 4px;
+    }
+
+    .main__hero {
+        display: flex;
+        flex-direction: column;
+    }
+
+    h5 {
+        font-family: 'Fira Sans', sans-serif;
+        font-size: 4em;
+        /* margin-top: 40%; */
+        margin-left: 3%;
+        text-align: center;
+        color: #182960;
+
+    }
+
+    img {
+        width: 90%;
+        margin-left: 10%;
+        margin-top: 10%;
+    }
+
+    section {
+        position: relative;
+        min-height: 100vh;
+        margin-top: 30%;
+    }
+
+    h2 {
+        border-bottom: 1px solid #FEB2DE;
+        font-family: 'Fira Sans', sans-serif;
+        font-size: 2em;
+        color: #458FF6;
+        text-align: center;
+    }
+
+    .btn {
+        margin: 2rem 0;
+        padding: 0.4rem 2rem;
+        border: 0.1rem solid #458FF6;
+        border-radius: 20px;
+        background-color: #fff;
+        cursor: pointer;
+        outline: none;
+        color: #458FF6;
+        font-weight: bold;
+    }
+
+    section:nth-of-type(odd) .landing__container::before {
+        width: 70px;
+        height: 70px;
+    }
+
+    section:nth-of-type(even) .landing__container::before {
+        width: 70px;
+        height: 70px;
+    }
+
+
+}
